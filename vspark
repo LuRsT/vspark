@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub show {
+    my $num = shift;
+    my $min = shift;
+    my $max = shift;
+
+    my @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+    my $index = ( $num * 7) / $max;
+    my $g = $graph[$index];
+
+    return $g . "\n";
+}
+
+my @list = sort {$a <=> $b} @ARGV;
+
+for my $i ( @ARGV ) {
+    printf "%s", ( show($i, $list[0], $list[-1]) );
+}
