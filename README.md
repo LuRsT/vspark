@@ -11,3 +11,18 @@ Create utf8 vertical graphs with ease.
     █
     ▊
     ▌
+
+or via STDIN:
+
+    seq 0 10 | sort -R | vspark
+    ▏
+    ▌
+    ▍
+    ▊
+    █
+    ▎
+    ▉
+    ▋
+    ▍
+    ▏
+    ▋
