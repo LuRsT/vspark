@@ -5,20 +5,18 @@ use warnings;
 
 sub show {
     my $num = shift;
-    my $min = shift;
     my $max = shift;
 
     my @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
-    my $index = ( $num * 7) / $max;
-    my $g = $graph[$index];
+    my $index = ( $num * ( scalar(@graph) - 1 ) ) / $max;
 
-    return $g . "\n";
+    return $graph[$index];
 }
 
-chomp(@ARGV = <STDIN>) unless @ARGV;
+chomp( @ARGV = <STDIN> ) unless @ARGV;
 
-my @list = sort {$a <=> $b} @ARGV;
+my @list = sort { $a <=> $b } @ARGV;
 
 for my $i ( @ARGV ) {
-    printf "%s", ( show($i, $list[0], $list[-1]) );
+    printf( "%s\n", show($i, $list[-1]) );
 }
