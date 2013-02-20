@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 # Default value, this will to the console size
-my $size = 100;
+my $size = 10;
 
 sub show {
     my $num  = shift;
@@ -15,7 +15,7 @@ sub show {
     my $bar_num = ( $num * ( scalar(@graph) * $size ) ) / $max;
 
     my $str = $graph[-1] x int($bar_num / scalar(@graph) );
-    $str   .= $graph[ int($bar_num % (scalar(@graph) - 1) ) ];
+    $str   .= $graph[ int($bar_num % (scalar(@graph) ) ) ];
 
     return $str;
 }
