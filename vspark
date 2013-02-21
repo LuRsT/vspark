@@ -21,6 +21,10 @@ sub show {
     my $size = shift;
 
     my @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+
+    if ( $size - 1 == 0) { $size = 1; }
+    else                 { $size--;   }
+
     my $bar_num = ( $num * ( scalar(@graph) * $size ) ) / $max;
 
     my $str = $graph[-1] x int($bar_num / scalar(@graph) );
