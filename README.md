@@ -26,3 +26,22 @@ or via STDIN:
     ▍
     ▏
     ▋
+
+You can also choose how many columns do you want the graph to spread out, by changing the env var TERM\_SIZE:
+
+    seq 10 | TERM_SIZE=10 vspark
+    █▏
+    ██▏
+    ███▏
+    ████▏
+    █████▏
+    ██████▏
+    ███████▏
+    ████████▏
+    █████████▏
+    ██████████▏
+
+With this, you can display a graphic that spreads out through all your console wideness (in bash):
+
+    seq 10 | TERM_SIZE=`tput cols` vspark
+    [Too big a graph to show]
