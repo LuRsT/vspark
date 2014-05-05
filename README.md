@@ -3,7 +3,7 @@ vspark
 
 Like spark, but vertical.
 
-Create utf8 vertical graphs with ease.
+Create utf8 or ascii vertical graphs with ease.
 
     vspark 1 20 400 300 200
     ▏
@@ -85,3 +85,46 @@ You can display a graphic that spreads out through all your console wideness (in
 
     seq 10 | TERM_SIZE=`tput cols` vspark
     [Too big a graph to show]
+
+
+You can also have ASCII output: 
+
+    seq 10 |TERM_SIZE=5 VSPARK_MODE="ASCII" vspark 
+    |
+    #
+    #|
+    ##
+    ##|
+    ##|
+    ###
+    ###|
+    ####
+    ####|
+
+
+And wether you want UTF or ASCII output, you can have one fixed-sized character only:
+
+    seq 10 |TERM_SIZE=5 VSPARK_MODE="FIXED-ASCII" vspark 
+    =
+    =
+    ==
+    ==
+    ===
+    ===
+    ===
+    ====
+    ====
+    =====
+    
+    seq 10 |TERM_SIZE=5 VSPARK_MODE="FIXED-UTF" vspark 
+    █
+    █
+    ██
+    ██
+    ███
+    ███
+    ███
+    ████
+    ████
+    █████
+    

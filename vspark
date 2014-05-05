@@ -5,6 +5,7 @@ use warnings;
 
 # Default value, this will to the console size
 my $size = $ENV{'TERM_SIZE'} || 1;
+my $mode = $ENV{'VSPARK_MODE'} || "UTF";
 
 
 chomp( @ARGV = <STDIN> ) unless @ARGV;
@@ -20,7 +21,18 @@ sub show {
     my $max  = shift;
     my $size = shift;
 
-    my @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+    my @graph;
+
+    if ($mode eq "ASCII") {
+        # curious about the split? http://www.perlmonks.org/index.pl/?node_id=94698
+        @graph = split //, q'|#';
+    } elsif ($mode eq "FIXED-ASCII") {
+        @graph = qw{ = };
+    } elsif ($mode eq "FIXED-UTF") {
+        @graph = qw{ █ };
+    } else {
+        @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+    }
 
     if ( $size - 1 == 0) { $size = 1; }
     else                 { $size--;   }
