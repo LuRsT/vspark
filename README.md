@@ -1,11 +1,19 @@
 vspark
 ======
 
-Like spark, but vertical.
-
 Create utf8 or ascii vertical graphs with ease.
 
-    vspark 1 20 400 300 200
+## Setup
+
+    $ curl https://raw.githubusercontent.com/LuRsT/vspark/master/vspark > ~/bin/vspark
+    (Examine ~/bin/vspark)
+    $ chmod +x ~/bin/vspark
+
+## How to use
+
+With a set of numbers:
+
+    $ vspark 1 20 400 300 200
     ▏
     ▏
     █
@@ -14,7 +22,7 @@ Create utf8 or ascii vertical graphs with ease.
 
 or via STDIN:
 
-    seq 0 10 | sort -R | vspark
+    $ seq 0 10 | sort -R | vspark
     ▏
     ▌
     ▍
@@ -29,7 +37,7 @@ or via STDIN:
 
 You can also choose how many columns do you want the graph to spread out, by changing the `GRAPH\_SIZE` env variable:
 
-    seq 10 | GRAPH_SIZE=10 vspark
+    $ seq 10 | GRAPH_SIZE=10 vspark
     █▏
     ██▏
     ███▏
@@ -44,7 +52,7 @@ You can also choose how many columns do you want the graph to spread out, by cha
 And if it strikes your fancy, you can display the numbers next to each bar, by
 using `DISPLAY\_NUMBERS` env variable (just needs to have some value in it):
 
-    seq 10 | GRAPH_SIZE=10 DISPLAY_NUMBERS=1 vspark
+    $ seq 10 | GRAPH_SIZE=10 DISPLAY_NUMBERS=1 vspark
      1 █
      2 █▉
      3 ██▊
@@ -59,7 +67,7 @@ using `DISPLAY\_NUMBERS` env variable (just needs to have some value in it):
 
 You can also have ASCII output using `CUSTOM_CHAR`:
 
-    seq 10 | GRAPH_SIZE=5 CUSTOM_CHAR="=" vspark
+    $ seq 10 | GRAPH_SIZE=5 CUSTOM_CHAR="=" vspark
     =
     =
     ==
@@ -75,7 +83,7 @@ You can also have ASCII output using `CUSTOM_CHAR`:
 
 You can create the shadow of a file:
 
-    awk '{ print length($0) }' vspark | GRAPH_SIZE=57 vspark
+    $ awk '{ print length($0) }' vspark | GRAPH_SIZE=57 vspark
     █████████████▍
     ▏
     █████████▉
@@ -111,6 +119,26 @@ You can create the shadow of a file:
     ██████████████▎
     █
 
+Add yours...
+
+## Vspark in other languages
+
+* Add yours here
+
 ## Licence
 
 The MIT License (MIT)
+
+## FAQ
+
+#### Why perl?
+
+Because, chances are, you already have it installed.
+
+#### Can you change the LICENCE to XXXXXX?
+
+Nope, I chose the MIT Licence because that's the one I want to use.
+
+#### Can I create this in XXXX language?
+
+Of course, but send a pull request to me with the link so I can add to this README file.
