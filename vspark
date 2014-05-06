@@ -25,26 +25,28 @@ use strict;
 use warnings;
 
 
-my $graph_size  = $ENV{'GRAPH_SIZE'} || 1;
-my $custom_char = $ENV{'CUSTOM_CHAR'};
+my $graph_size      = $ENV{'GRAPH_SIZE'} || 1;
+my $custom_char     = $ENV{'CUSTOM_CHAR'};
+my $display_numbers = $ENV{'DISPLAY_NUMBERS'};
 
 
 chomp( @ARGV = <STDIN> ) unless @ARGV;
 
 my @list = sort { $a <=> $b } @ARGV;
 
-for my $i ( @ARGV ) {
-    printf( "%s\n", show($i, $list[-1], $graph_size) );
+for my $number ( @ARGV ) {
+    my $graph_line = show($number, $list[-1], $graph_size, $display_numbers);
+    printf( "%s\n", $graph_line);
 }
 
 
 sub show {
-    my $num        = shift;
-    my $max        = shift;
-    my $graph_size = shift;
+    my $number          = shift;
+    my $max             = shift;
+    my $graph_size      = shift;
+    my $display_numbers = shift;
 
     my @graph;
-
     if ($custom_char) {
         @graph = ($custom_char);
     }
@@ -55,10 +57,14 @@ sub show {
     if ( $graph_size <= 1) { $graph_size = 1; }
     else                   { $graph_size--;   }
 
-    my $bar_num = ( $num * ( scalar(@graph) * $graph_size ) ) / $max;
+    my $bar_num = ( $number * ( scalar(@graph) * $graph_size ) ) / $max;
 
-    my $str = $graph[-1] x int($bar_num / scalar(@graph) );
-    $str   .= $graph[ int($bar_num % (scalar(@graph) ) ) ];
+    my $bar = '';
+    if ($display_numbers) {
+        $bar .= sprintf("%*d ", length($max), $number);
+    }
+    $bar .= $graph[-1] x int($bar_num / scalar(@graph) );
+    $bar .= $graph[ int($bar_num % (scalar(@graph) ) ) ];
 
-    return $str;
+    return $bar;
 }

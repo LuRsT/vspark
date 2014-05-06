@@ -27,7 +27,7 @@ or via STDIN:
     ▏
     ▋
 
-You can also choose how many columns do you want the graph to spread out, by changing the env var GRAPH\_SIZE:
+You can also choose how many columns do you want the graph to spread out, by changing the `GRAPH\_SIZE` env variable:
 
     seq 10 | GRAPH_SIZE=10 vspark
     █▏
@@ -41,6 +41,37 @@ You can also choose how many columns do you want the graph to spread out, by cha
     █████████▏
     ██████████▏
 
+And if it strikes your fancy, you can display the numbers next to each bar, by
+using `DISPLAY\_NUMBERS` env variable (just needs to have some value in it):
+
+    seq 10 | GRAPH_SIZE=10 DISPLAY_NUMBERS=1 vspark
+     1 █
+     2 █▉
+     3 ██▊
+     4 ███▋
+     5 ████▋
+     6 █████▌
+     7 ██████▍
+     8 ███████▎
+     9 ████████▏
+    10 █████████▏
+
+
+You can also have ASCII output using `CUSTOM_CHAR`:
+
+    seq 10 | GRAPH_SIZE=5 CUSTOM_CHAR="=" vspark
+    =
+    =
+    ==
+    ==
+    ===
+    ===
+    ===
+    ====
+    ====
+    =====
+
+## Creative uses
 
 You can create the shadow of a file:
 
@@ -80,25 +111,6 @@ You can create the shadow of a file:
     ██████████████▎
     █
 
+## Licence
 
-You can display a graphic that spreads out through all your console wideness
-(in bash):
-
-    seq 10 | GRAPH_SIZE=`tput cols` vspark
-    [Too big a graph to show]
-
-
-You can also have ASCII output using `CUSTOM_CHAR`:
-
-    seq 10 | GRAPH_SIZE=5 CUSTOM_CHAR="=" vspark
-    =
-    =
-    ==
-    ==
-    ===
-    ===
-    ===
-    ====
-    ====
-    =====
-
+The MIT License (MIT)
