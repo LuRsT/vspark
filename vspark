@@ -5,6 +5,7 @@ use warnings;
 
 # Default value, this will to the console size
 my $size = $ENV{'TERM_SIZE'} || 1;
+my $custom_char = $ENV{'CUSTOM_CHAR'};
 
 
 chomp( @ARGV = <STDIN> ) unless @ARGV;
@@ -20,7 +21,14 @@ sub show {
     my $max  = shift;
     my $size = shift;
 
-    my @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+    my @graph;
+
+    if ($custom_char) {
+        @graph = ($custom_char);
+    }
+    else {
+        @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+    }
 
     if ( $size - 1 == 0) { $size = 1; }
     else                 { $size--;   }
