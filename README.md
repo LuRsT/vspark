@@ -87,24 +87,9 @@ You can display a graphic that spreads out through all your console wideness (in
     [Too big a graph to show]
 
 
-You can also have ASCII output: 
+You can also have ASCII output using `CUSTOM_CHAR`:
 
-    seq 10 |TERM_SIZE=5 VSPARK_MODE="ASCII" vspark 
-    |
-    #
-    #|
-    ##
-    ##|
-    ##|
-    ###
-    ###|
-    ####
-    ####|
-
-
-And wether you want UTF or ASCII output, you can have one fixed-sized character only:
-
-    seq 10 |TERM_SIZE=5 VSPARK_MODE="FIXED-ASCII" vspark 
+    seq 10 | TERM_SIZE=5 CUSTOM_CHAR="=" vspark
     =
     =
     ==
@@ -115,16 +100,4 @@ And wether you want UTF or ASCII output, you can have one fixed-sized character 
     ====
     ====
     =====
-    
-    seq 10 |TERM_SIZE=5 VSPARK_MODE="FIXED-UTF" vspark 
-    █
-    █
-    ██
-    ██
-    ███
-    ███
-    ███
-    ████
-    ████
-    █████
-    
+
