@@ -35,36 +35,41 @@ chomp( @ARGV = <STDIN> ) unless @ARGV;
 my @list = sort { $a <=> $b } @ARGV;
 
 for my $number ( @ARGV ) {
-    my $graph_line = show($number, $list[-1], $graph_size, $display_numbers);
+    my $graph_line = get_graph_line(
+        $number,
+        $list[-1],
+        $graph_size,
+        $display_numbers
+    );
     printf( "%s\n", $graph_line);
 }
 
 
-sub show {
+sub get_graph_line {
     my $number          = shift;
     my $max             = shift;
     my $graph_size      = shift;
     my $display_numbers = shift;
 
-    my @graph;
-    if ($custom_char) {
-        @graph = ($custom_char);
+    my @char_list;
+    if ( $custom_char ) {
+        @char_list = ( $custom_char );
     }
     else {
-        @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
+        @char_list = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
     }
 
     if ( $graph_size <= 1) { $graph_size = 1; }
     else                   { $graph_size--;   }
 
-    my $bar_num = ( $number * ( scalar(@graph) * $graph_size ) ) / $max;
+    my $char_index = ( $number * ( scalar(@char_list) * $graph_size ) ) / $max;
 
-    my $bar = '';
+    my $graph_line = '';
     if ($display_numbers) {
-        $bar .= sprintf("%*d ", length($max), $number);
+        $graph_line .= sprintf("%*d ", length($max), $number);
     }
-    $bar .= $graph[-1] x int($bar_num / scalar(@graph) );
-    $bar .= $graph[ int($bar_num % (scalar(@graph) ) ) ];
+    $graph_line .= $char_list[-1] x int($char_index / scalar(@char_list) );
+    $graph_line .= $char_list[ int($char_index % (scalar(@char_list) ) ) ];
 
-    return $bar;
+    return $graph_line;
 }
