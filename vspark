@@ -3,8 +3,8 @@
 use strict;
 use warnings;
 
-# Default value, this will to the console size
-my $size = $ENV{'TERM_SIZE'} || 1;
+
+my $graph_size  = $ENV{'GRAPH_SIZE'} || 1;
 my $custom_char = $ENV{'CUSTOM_CHAR'};
 
 
@@ -13,13 +13,14 @@ chomp( @ARGV = <STDIN> ) unless @ARGV;
 my @list = sort { $a <=> $b } @ARGV;
 
 for my $i ( @ARGV ) {
-    printf( "%s\n", show($i, $list[-1], $size) );
+    printf( "%s\n", show($i, $list[-1], $graph_size) );
 }
 
+
 sub show {
-    my $num  = shift;
-    my $max  = shift;
-    my $size = shift;
+    my $num        = shift;
+    my $max        = shift;
+    my $graph_size = shift;
 
     my @graph;
 
@@ -30,10 +31,10 @@ sub show {
         @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
     }
 
-    if ( $size - 1 == 0) { $size = 1; }
-    else                 { $size--;   }
+    if ( $graph_size - 1 == 0) { $graph_size = 1; }
+    else                       { $graph_size--;   }
 
-    my $bar_num = ( $num * ( scalar(@graph) * $size ) ) / $max;
+    my $bar_num = ( $num * ( scalar(@graph) * $graph_size ) ) / $max;
 
     my $str = $graph[-1] x int($bar_num / scalar(@graph) );
     $str   .= $graph[ int($bar_num % (scalar(@graph) ) ) ];

@@ -27,9 +27,9 @@ or via STDIN:
     ▏
     ▋
 
-You can also choose how many columns do you want the graph to spread out, by changing the env var TERM\_SIZE:
+You can also choose how many columns do you want the graph to spread out, by changing the env var GRAPH\_SIZE:
 
-    seq 10 | TERM_SIZE=10 vspark
+    seq 10 | GRAPH_SIZE=10 vspark
     █▏
     ██▏
     ███▏
@@ -44,7 +44,7 @@ You can also choose how many columns do you want the graph to spread out, by cha
 
 You can create the shadow of a file:
 
-    awk '{ print length($0) }' vspark | TERM\_SIZE=57 vspark
+    awk '{ print length($0) }' vspark | GRAPH_SIZE=57 vspark
     █████████████▍
     ▏
     █████████▉
@@ -81,15 +81,16 @@ You can create the shadow of a file:
     █
 
 
-You can display a graphic that spreads out through all your console wideness (in bash):
+You can display a graphic that spreads out through all your console wideness
+(in bash):
 
-    seq 10 | TERM_SIZE=`tput cols` vspark
+    seq 10 | GRAPH_SIZE=`tput cols` vspark
     [Too big a graph to show]
 
 
 You can also have ASCII output using `CUSTOM_CHAR`:
 
-    seq 10 | TERM_SIZE=5 CUSTOM_CHAR="=" vspark
+    seq 10 | GRAPH_SIZE=5 CUSTOM_CHAR="=" vspark
     =
     =
     ==
