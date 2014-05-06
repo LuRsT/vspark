@@ -52,8 +52,8 @@ sub show {
         @graph = qw{ ▏ ▎ ▍ ▌ ▋ ▊ ▉ █};
     }
 
-    if ( $graph_size - 1 == 0) { $graph_size = 1; }
-    else                       { $graph_size--;   }
+    if ( $graph_size <= 1) { $graph_size = 1; }
+    else                   { $graph_size--;   }
 
     my $bar_num = ( $num * ( scalar(@graph) * $graph_size ) ) / $max;
 
