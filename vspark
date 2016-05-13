@@ -41,7 +41,7 @@ for my $number ( @ARGV ) {
         $graph_size,
         $display_numbers
     );
-    printf( "%s\n", $graph_line);
+    printf("%s\n", $graph_line);
 }
 
 
@@ -68,8 +68,11 @@ sub get_graph_line {
     if ($display_numbers) {
         $graph_line .= sprintf("%*d ", length($max), $number);
     }
-    $graph_line .= $char_list[-1] x int($char_index / scalar(@char_list) );
-    $graph_line .= $char_list[ int($char_index % (scalar(@char_list) ) ) ];
+    if ($number > 0) {
+        my $char_list_lenght = scalar(@char_list);
+        $graph_line .= $char_list[-1] x int($char_index / $char_list_lenght );
+        $graph_line .= $char_list[int($char_index % $char_list_lenght)];
+    }
 
     return $graph_line;
 }
