@@ -79,10 +79,6 @@ You can also have ASCII output using `CUSTOM_CHAR`:
     ====
     =====
 
-## Vspark in other languages
-
-* Add yours here
-
 ## Licence
 
 The MIT License (MIT)
