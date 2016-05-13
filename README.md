@@ -79,48 +79,6 @@ You can also have ASCII output using `CUSTOM_CHAR`:
     ====
     =====
 
-## Creative uses
-
-You can create the shadow of a file:
-
-    $ awk '{ print length($0) }' vspark | GRAPH_SIZE=57 vspark
-    █████████████▍
-    ▏
-    █████████▉
-    ███████████▋
-    ▏
-    █████████████████████████████████████████
-    ██████████████████████████████▎
-    ▏
-    ▏
-    █████████████████████████████████▉
-    ▏
-    ████████████████████████████████▏
-    ▏
-    ██████████████████▊
-    ███████████████████████████████████████████▋
-    █
-    ▏
-    █████████
-    ██████████████████▊
-    ██████████████████▊
-    ██████████████████▊
-    ▏
-    █████████████████████████████████
-    ▏
-    ██████████████████████████████████▊
-    ██████████████████████████████████▊
-    ▏
-    ████████████████████████████████████████████████████████▏
-    ▏
-    ████████████████████████████████████████████████████▌
-    ████████████████████████████████████████████████████▌
-    ▏
-    ██████████████▎
-    █
-
-Add yours...
-
 ## Vspark in other languages
 
 * Add yours here
@@ -128,17 +86,3 @@ Add yours...
 ## Licence
 
 The MIT License (MIT)
-
-## FAQ
-
-#### Why perl?
-
-Because, chances are, you already have it installed.
-
-#### Can you change the LICENCE to XXXXXX?
-
-Nope, I chose the MIT Licence because that's the one I want to use.
-
-#### Can I create this in XXXX language?
-
-Of course, but send a pull request to me with the link so I can add to this README file.
