@@ -25,23 +25,29 @@ use strict;
 use warnings;
 
 
-my $graph_size      = $ENV{'GRAPH_SIZE'} || 1;
-my $custom_char     = $ENV{'CUSTOM_CHAR'};
-my $display_numbers = $ENV{'DISPLAY_NUMBERS'};
+my $GRAPH_SIZE      = $ENV{'GRAPH_SIZE'} || 1;
+my $CUSTOM_CHAR     = $ENV{'CUSTOM_CHAR'};
+my $DISPLAY_NUMBERS = $ENV{'DISPLAY_NUMBERS'};
 
 
 chomp( @ARGV = <STDIN> ) unless @ARGV;
 
-my @list = sort { $a <=> $b } @ARGV;
-
 for my $number ( @ARGV ) {
     my $graph_line = get_graph_line(
         $number,
-        $list[-1],
-        $graph_size,
-        $display_numbers
+        get_max_from_array(@ARGV),
+        $GRAPH_SIZE,
+        $DISPLAY_NUMBERS,
+        $CUSTOM_CHAR,
     );
     printf("%s\n", $graph_line);
+}
+
+
+sub get_max_from_array {
+    my @list = @_;
+    my @sorted_list = sort { $a <=> $b } @list;
+    return $sorted_list[-1];
 }
 
 
@@ -50,6 +56,7 @@ sub get_graph_line {
     my $max             = shift;
     my $graph_size      = shift;
     my $display_numbers = shift;
+    my $custom_char     = shift;
 
     my @char_list;
     if ( $custom_char ) {
